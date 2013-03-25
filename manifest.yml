@@ -1,0 +1,14 @@
+---
+applications:
+- name: cwchat
+  framework: node
+  runtime: node08
+  memory: 128M
+  instances: 1
+  url: cwchat.${target-base}
+  path: .
+  services:
+    chatroom:
+      vendor: mongodb
+      version: '2.0'
+      tier: free
