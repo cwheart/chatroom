@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form
+    div
+      textarea#message_box
+    div
+      input#send(type='submit')
+  ul#chat_list

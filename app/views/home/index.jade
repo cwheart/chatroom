@@ -1,0 +1,17 @@
+extends ../layouts/app
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form
+    div
+      textarea#message_box
+    div
+      input#send(type='submit')
+  ul#chat_list
+    - for (var i in messages)
+      li 
+        span #{messages[i].uname}:
+        p #{messages[i].content}
+block footer
+  script(type="text/javascript", src="/javascripts/chat.js")
