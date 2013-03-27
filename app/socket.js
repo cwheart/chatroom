@@ -25,10 +25,9 @@ module.exports = function (io, sessionStore) {
 
   io.on('connection', function(socket){
     socket.on('server_message', function (data) {
-      console.log(socket.handshake.user);
       var message = new Message({
-        user_id: socket.handshake.user.id,
-        uname: socket.handshake.user.name,
+        // user_id: socket.handshake.user.id,
+        // uname: socket.handshake.user.name,
         content: data.message,
         sended_at: new Date()
       });
