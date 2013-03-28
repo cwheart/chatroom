@@ -10,8 +10,8 @@ var express = require('express'),
     RedisStore = require('connect-redis')(express),
     path = require('path'),
     sessionStore = new RedisStore({
-      host: 127.0.0.1,
-      db: chat_room
+      host: '127.0.0.1',
+      db: 'chat_room'
     });
 
 var env = process.env.NODE_ENV || 'development'
