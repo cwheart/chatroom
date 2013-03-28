@@ -11,6 +11,8 @@
     "socket.io": "*",
     "connect": "*",
     "cookie": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "connect-redis": "*",
+    "redis": "0.7.x"
   }
 }
