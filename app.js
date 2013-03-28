@@ -11,7 +11,7 @@ var express = require('express'),
     path = require('path'),
     sessionStore = new RedisStore({
       host: '127.0.0.1',
-      db: 'chat_room'
+      db: 'redis_chatroom'
     });
 
 var env = process.env.NODE_ENV || 'development'
@@ -50,19 +50,18 @@ var io = require('socket.io').listen(server);
 
 require('./app/socket')(io, sessionStore);
 
-// server.listen(app.get('port'), function(){
-//  console.log("Express server listening on port " + app.get('port'));
-// });
-
-process.on("message", function(m ,handle){
-  if(handle){
-    server.listen(handle, function(err){
-      if(err){
-        console.log("worker listen error");
-      }else{
-        process.send({"listenOK" : true});
-        console.log("worker listen ok");
-      }   
-    });
-  }
+server.listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
 });
+
+//process.on("message", function(m ,handle){
+//  if(handle){
+//    server.listen(handle, function(err){
+//      if(err){
+//        console.log("worker listen error");
+//      }else{
+//        process.send({"listenOK" : true});
+//        console.log("worker listen ok");
+//      }   
+//    });
+//  }
