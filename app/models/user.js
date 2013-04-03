@@ -2,14 +2,13 @@ module.exports = function (mongoose) {
   var UserSchema = mongoose.Schema({
     name: String,
     email: String,
-    crypted_password: String
+    crypted_password: String,
+    status: String
   });
-
-  UserSchema.methods.login = function(){
-    mongoose.model('User').find({email: this.email}, function(user){
-      return user;
+  UserSchema.methods.login = function(fn){
+    User.findOne({email: this.email, crypted_password: this.crypted_password}, function(err, user){
+      fn(user);
     });
   };
-  
-  mongoose.model('User', UserSchema);
+  var User = mongoose.model('User', UserSchema);
 }
